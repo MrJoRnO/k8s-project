@@ -21,4 +21,4 @@ spec:
           livenessProbe:
             httpGet:
               path: /healthcheck
-              port: {{ .Values.service.targetPort }} 
+              port: {{ .Values.service.targetPort }}

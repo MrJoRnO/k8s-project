@@ -2,7 +2,9 @@ Rick & Morty Cloud-Native API 🚀
 This project demonstrates a production-grade CI/CD pipeline and Kubernetes orchestration for a Flask-based API. The application integrates with the Rick & Morty API, filtering data to return specific character information.
 
 🛠 Tech Stack
+    
     • Language: Python (Flask)
+    
     • Containerization: Docker
 
     • Orchestration: Kubernetes (K8s)

@@ -40,6 +40,7 @@ The project includes a modular Helm Chart for easier configuration management:
 The project utilizes GitHub Actions to ensure code quality and deployment stability on every push.
 
 The pipeline performs the following steps:
+
     1. Cluster Creation: Provisions a local Kubernetes cluster using Kind.
     2. Docker Build: Builds the container image from the Dockerfile.
     3. Image Loading: Sideloads the image into the Kind nodes.

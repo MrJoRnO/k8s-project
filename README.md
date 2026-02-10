@@ -31,6 +31,7 @@ The project includes a modular Helm Chart for easier configuration management:
 - helm install rick-release ./Helm/rick-morty-app
 
 🛣 API Endpoints
+    
     • GET /characters: Returns a filtered JSON list of characters who are Human, Alive, and from Earth.
       
     • GET /healthcheck: Returns a 200 OK status to verify the application and connectivity are healthy.

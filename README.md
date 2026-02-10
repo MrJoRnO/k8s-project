@@ -3,15 +3,14 @@ This project demonstrates a production-grade CI/CD pipeline and Kubernetes orche
 
 🛠 Tech Stack
     • Language: Python (Flask)
-    
     • Containerization: Docker
 
     • Orchestration: Kubernetes (K8s)
-     
+
     • Package Management: Helm
-     
+
     • CI/CD: GitHub Actions
-     
+
     • Local Cluster: Kind / Minikube
 
 🚀 Getting Started

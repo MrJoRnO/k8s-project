@@ -1,0 +1,37 @@
+name: DevOps Rick & Morty CI
+on: [push]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create local cluster (Kind)
+        uses: helm/kind-action@v1.4.0 # סעיף 40
+
+      - name: Build Docker image
+        run: docker build -t rick-morty-app:latest . # סעיף 41
+
+      - name: Load image to Kind
+        run: kind load docker-image rick-morty-app:latest
+
+      - name: Deploy to Kubernetes using Helm
+        run: |
+          helm install rick-release ./Helm/rick-morty-app # סעיף 42
+
+      - name: Test endpoints
+        run: |
+          # המתנה שהפודים יהיו מוכנים
+          kubectl wait --for=condition=ready pod -l app=rick-morty --timeout=90s
+          
+          # יצירת פורוורד זמני לבדיקה
+          kubectl port-forward svc/rick-morty-service 5000:80 & 
+          sleep 10
+          
+          # בדיקת ה-Healthcheck (סעיף 43)
+          curl -f http://localhost:5000/healthcheck
+          
+          # בדיקת הנתונים
+          curl -f http://localhost:5000/characters

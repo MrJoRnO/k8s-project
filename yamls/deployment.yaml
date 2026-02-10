@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rick-morty-app
+  labels:
+    app: rick-morty
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: rick-morty
+  template:
+    metadata:
+      labels:
+        app: rick-morty
+    spec:
+      containers:
+      - name: rick-morty-container
+        image: rick-morty-app:latest 
+        imagePullPolicy: Never # אומר לקוברנטיס להשתמש ב-Image מקומי (חשוב ל-Minikube)
+        ports:
+        - containerPort: 5000 # הפורט עליו רצה אפליקציית ה-Flask
+        
+        # סעיף 27: מימוש ה-Healthcheck בתוך קוברנטיס
+        livenessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10

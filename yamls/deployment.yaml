@@ -17,11 +17,11 @@ spec:
       containers:
       - name: rick-morty-container
         image: rick-morty-app:latest 
-        imagePullPolicy: Never # אומר לקוברנטיס להשתמש ב-Image מקומי (חשוב ל-Minikube)
+        imagePullPolicy: Never # k8s know to use with local image
         ports:
-        - containerPort: 5000 # הפורט עליו רצה אפליקציית ה-Flask
+        - containerPort: 5000 
         
-        # סעיף 27: מימוש ה-Healthcheck בתוך קוברנטיס
+
         livenessProbe:
           httpGet:
             path: /healthcheck
